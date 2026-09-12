@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>th_Total</name>
+   <tag></tag>
+   <elementGuidId>abebed4c-8f34-41e5-b08d-94101769d1d5</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>tr:nth-of-type(4) > th</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>(.//*[normalize-space(text()) and normalize-space(.)='Tax'])[1]/following::th[1]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=cell[name=&quot;Total&quot;s]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>th</value>
+      <webElementGuid>76452718-82ed-4b6d-a058-673f0a0f8f51</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Total</value>
+      <webElementGuid>1378bd0f-90a7-4142-8b0b-cf5e08d53166</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-ea457be4ec94f06df5878aa594ea7efe</value>
+      <webElementGuid>bc2163df-3131-4f21-ba8e-c7a5fe86b530</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>/html[1]/body[@class=&quot;min-vh-100 d-flex flex-column&quot;]/main[@class=&quot;container py-4 flex-grow-1 d-flex flex-column&quot;]/div[1]/table[@class=&quot;table table-striped&quot;]/tbody[1]/tr[4]/th[1]</value>
+      <webElementGuid>7b69dbad-a0d0-4895-84fc-f788ca07e0ad</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Tax'])[1]/following::th[1]</value>
+      <webElementGuid>491ee91b-c91f-4af6-aa52-4f050cf5f3ec</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Discount'])[1]/following::th[2]</value>
+      <webElementGuid>adf9d398-5b74-4ee7-906f-eddfd1d6a698</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Back'])[1]/preceding::th[1]</value>
+      <webElementGuid>ea279973-075a-44c5-9eab-687f1520eb1b</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Testing-Site - RMIT Vietnam Software Testing Course'])[1]/preceding::th[1]</value>
+      <webElementGuid>4e9a3393-685a-40a1-bbea-9ed468f09a89</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Total']/parent::*</value>
+      <webElementGuid>f298a913-cc5e-4df8-84a5-6cd8654900f2</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//tr[4]/th</value>
+      <webElementGuid>28ef7cd8-c648-41bc-b9de-eb2cfc572e10</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//th[(text() = 'Total' or . = 'Total')]</value>
+      <webElementGuid>f0889c17-734c-45f1-a640-d08424e339b5</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[(name() = 'tr') and (position() = 4)]//th</value>
+      <webElementGuid>68c71efb-ab71-46e7-9356-b2a4a32c9934</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

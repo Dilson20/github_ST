@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC_RunVisitServicesAndBilling</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>560736cb-4caa-42f8-82c5-6c855c5678d9</testCaseGuid>
+</TestCaseEntity>

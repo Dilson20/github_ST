@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC_TelephoneValidation_BVA</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>a72f146d-6bef-431d-b169-a68ba37138a0</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>0e1e79d5-be69-4bd2-b5b9-1633a18bfe7a</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>9ca4bd0c-3930-49e5-9a40-daf76a897186</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'1234567'</defaultValue>
+      <description></description>
+      <id>0e1e79d5-be69-4bd2-b5b9-1633a18bfe7a</id>
+      <masked>false</masked>
+      <name>telephoneValue</name>
+   </variable>
+   <variable>
+      <defaultValue>'valid'</defaultValue>
+      <description></description>
+      <id>9ca4bd0c-3930-49e5-9a40-daf76a897186</id>
+      <masked>false</masked>
+      <name>expectedResult</name>
+   </variable>
+</TestCaseEntity>

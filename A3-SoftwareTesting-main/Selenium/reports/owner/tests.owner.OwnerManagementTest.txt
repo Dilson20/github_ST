@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: tests.owner.OwnerManagementTest
+-------------------------------------------------------------------------------
+Tests run: 16, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 35.01 s <<< FAILURE! -- in tests.owner.OwnerManagementTest
+tests.owner.OwnerManagementTest.frPg1_ownerListShouldShowFiveOwnersPerPage -- Time elapsed: 1.133 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: FR-PG1 requires 5 owners per page; the release candidate shows 6 instead. ==> expected: <5> but was: <6>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:563)
+	at tests.owner.OwnerManagementTest.frPg1_ownerListShouldShowFiveOwnersPerPage(OwnerManagementTest.java:298)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+

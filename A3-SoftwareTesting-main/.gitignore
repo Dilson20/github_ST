@@ -1,0 +1,31 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and Editor Files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.classpath
+.project
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# Build & Compilation Artifacts
+**/target/
+*.class
+
+# Log Files
+*.log
+
+# Large Binaries (Testing Site JAR is 65MB, excluded to avoid GitHub size limits)
+*.jar
+*.war

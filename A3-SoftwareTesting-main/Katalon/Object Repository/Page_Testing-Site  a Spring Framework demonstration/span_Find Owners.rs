@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span_Find Owners</name>
+   <tag></tag>
+   <elementGuidId>7e5e0e69-c618-4011-93c3-bdb97ef6a333</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='main-navbar']/ul/li[2]/a/span</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=link[name=&quot;Find Owners&quot;i]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>addbe36d-5f41-4d48-b576-365bae6bc9fb</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Find Owners</value>
+      <webElementGuid>5ce322f5-26a0-4459-be11-c4fd4858de5e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-6a90d25d2691e7c30319f9e49b0daacb</value>
+      <webElementGuid>383a6f95-d2e7-4b03-a282-825c4dcc6b7a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;main-navbar&quot;)/ul[@class=&quot;navbar-nav me-auto mb-2 mb-lg-0&quot;]/li[@class=&quot;nav-item&quot;]/a[@class=&quot;nav-link&quot;]/span[1]</value>
+      <webElementGuid>09cfe772-809e-4a2e-a5c9-d4e7d283ff8d</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='main-navbar']/ul/li[2]/a/span</value>
+      <webElementGuid>d3b25881-3c06-44bc-8241-cf14d2d6e48c</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Home'])[1]/following::span[1]</value>
+      <webElementGuid>3dcd8bb6-95c0-4918-8b0c-2943d35b19e1</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Menu'])[1]/following::span[2]</value>
+      <webElementGuid>bd705100-2de4-47ee-95a6-a30f27a900e4</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Veterinarians'])[1]/preceding::span[1]</value>
+      <webElementGuid>16aac0b6-e20f-4e4b-a098-f493c43db6e4</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Welcome'])[1]/preceding::span[2]</value>
+      <webElementGuid>a021965a-bea5-4a5b-aba1-45aff7a4ebea</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Find Owners']/parent::*</value>
+      <webElementGuid>545acb37-4fb5-4153-85a0-5c4e57e00cc7</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//li[2]/a/span</value>
+      <webElementGuid>9cd3db9d-e85d-4c80-af70-c56666a22670</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[(text() = 'Find Owners' or . = 'Find Owners')]</value>
+      <webElementGuid>b4035fac-3bb0-4615-acdd-14d7887a3e7d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@title = 'find owners']//span</value>
+      <webElementGuid>a2f365b5-8009-49de-ab78-7e23e8e03d93</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

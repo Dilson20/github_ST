@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>td_411.60</name>
+   <tag></tag>
+   <elementGuidId>0970872a-d640-4522-bb5a-686d7658e849</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>.table-striped:nth-child(9) tr:nth-child(4) td</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' table-striped ') and (position() = 9)]//*[(name() = 'tr') and (position() = 4)]//td</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=cell[name=&quot;411.60&quot;i]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>td</value>
+      <webElementGuid>def43590-38bc-4a5c-b544-d85170a7ac39</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>411.60</value>
+      <webElementGuid>9c0ef217-5580-40fa-9086-301a5cf08268</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-131cab0720366dcc06bd491022d8d284</value>
+      <webElementGuid>9eac8bd3-d306-4452-8e97-bb376fd58ae6</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' table-striped ') and (position() = 9)]//*[(name() = 'tr') and (position() = 4)]//td</value>
+      <webElementGuid>28a75229-b74f-48a9-9963-81f678b026e7</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' table-striped ') and (position() = 9)]//*[(name() = 'tr') and (position() = 4)]//td</value>
+      <webElementGuid>e9701ea8-bc18-403a-b8de-02ff8b9ca376</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//td[(text() = '411.60' or . = '411.60')]</value>
+      <webElementGuid>4cfcb2f2-fbcf-48e4-8e9f-705bec9c9c3e</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

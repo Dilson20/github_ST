@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC_PetBirthDate_BVA</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>0fa4be60-144d-4a70-b617-39bb8ebfdea0</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>7879dfe7-bdc4-432b-90b8-3dae459ed8b3</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>98fcce8d-832b-4bac-848d-109d4dc62250</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'0'</defaultValue>
+      <description></description>
+      <id>7879dfe7-bdc4-432b-90b8-3dae459ed8b3</id>
+      <masked>false</masked>
+      <name>dateOffset</name>
+   </variable>
+   <variable>
+      <defaultValue>'valid'</defaultValue>
+      <description></description>
+      <id>98fcce8d-832b-4bac-848d-109d4dc62250</id>
+      <masked>false</masked>
+      <name>expectedResult</name>
+   </variable>
+</TestCaseEntity>

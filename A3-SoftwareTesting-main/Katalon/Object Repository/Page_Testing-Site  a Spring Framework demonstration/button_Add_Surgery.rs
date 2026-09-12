@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>button_Add_Surgery</name>
+   <tag></tag>
+   <elementGuidId>f56d6f4d-1eb3-4ba5-9c0e-f5c671e7fb0d</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>tr:nth-of-type(3) > td:nth-of-type(3) > form > button.btn.btn-primary.btn-sm.d-inline-flex.align-items-center.justify-content-center</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>(.//*[normalize-space(text()) and normalize-space(.)='Surgery'])[1]/following::button[1]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=row[name=&quot;Surgery 200.00 Add&quot;i] >> internal:role=button</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>button</value>
+      <webElementGuid>c390e4f1-b441-4cd8-85b1-c4e77379a243</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>btn btn-primary btn-sm d-inline-flex align-items-center justify-content-center</value>
+      <webElementGuid>e3a85b87-51d4-453a-945e-e91af17e5f54</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>type</name>
+      <type>Main</type>
+      <value>submit</value>
+      <webElementGuid>e33cdd44-08c4-43d0-9cb5-766cb4911746</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Add</value>
+      <webElementGuid>03f8cc6a-d9fb-4d52-9b5c-fc7bcd5f24b6</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>/html[1]/body[@class=&quot;min-vh-100 d-flex flex-column&quot;]/main[@class=&quot;container py-4 flex-grow-1 d-flex flex-column&quot;]/div[1]/table[@class=&quot;table table-striped&quot;]/tbody[1]/tr[3]/td[3]/form[1]/button[@class=&quot;btn btn-primary btn-sm d-inline-flex align-items-center justify-content-center&quot;]</value>
+      <webElementGuid>4e8902cc-7e2f-4444-a6c2-eac2f346ec71</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>(//button[@type='submit'])[3]</value>
+      <webElementGuid>31bc691d-99cb-473a-8115-369b1b5990b4</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Surgery'])[1]/following::button[1]</value>
+      <webElementGuid>762db1c6-c517-48fb-919f-675cc2615dcf</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Add'])[2]/following::button[1]</value>
+      <webElementGuid>c80b7291-1845-42e4-b2e9-d2a7cc4cf19a</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Vaccination'])[1]/preceding::button[1]</value>
+      <webElementGuid>bc9ff293-6b2c-4bb2-b324-683cbe2da7bc</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Add'])[4]/preceding::button[1]</value>
+      <webElementGuid>440b0a8d-0c31-4889-bce5-7e9abd5a2678</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//tr[3]/td[3]/form/button</value>
+      <webElementGuid>30ee3c3d-fe71-4c7d-9e0d-324e21f10d1e</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//button[@type = 'submit' and (text() = 'Add' or . = 'Add')]</value>
+      <webElementGuid>449455da-5f6e-46d1-9e78-9e2c5306878d</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

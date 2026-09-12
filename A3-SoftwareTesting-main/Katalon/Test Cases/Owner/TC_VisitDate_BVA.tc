@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC_VisitDate_BVA</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ce715697-d4c3-469d-adb9-cbb173852966</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>84e622c9-fb16-4306-8a19-189c6c887c09</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>745d4952-baed-4c6d-afbd-50c318ca3c47</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'0'</defaultValue>
+      <description></description>
+      <id>84e622c9-fb16-4306-8a19-189c6c887c09</id>
+      <masked>false</masked>
+      <name>dateOffset</name>
+   </variable>
+   <variable>
+      <defaultValue>'invalid'</defaultValue>
+      <description></description>
+      <id>745d4952-baed-4c6d-afbd-50c318ca3c47</id>
+      <masked>false</masked>
+      <name>expectedResult</name>
+   </variable>
+</TestCaseEntity>

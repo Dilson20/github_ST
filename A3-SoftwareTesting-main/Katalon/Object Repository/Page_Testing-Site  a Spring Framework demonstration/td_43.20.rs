@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>td_43.20</name>
+   <tag></tag>
+   <elementGuidId>3251c115-e9d2-4add-ae65-ad7ac28607c6</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>(.//*[normalize-space(text()) and normalize-space(.)='Total'])[1]/following::td[1]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=cell[name=&quot;43.20&quot;i]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>td</value>
+      <webElementGuid>c4e2be15-d2a3-4930-9980-206a952e73b2</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>43.20</value>
+      <webElementGuid>098763b8-b83c-4216-9c07-63db3ce5b46a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-131cab0720366dcc06bd491022d8d284</value>
+      <webElementGuid>4c76995e-aac3-4b1e-9f4d-6c678ac66097</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>/html[1]/body[@class=&quot;min-vh-100 d-flex flex-column&quot;]/main[@class=&quot;container py-4 flex-grow-1 d-flex flex-column&quot;]/div[1]/table[@class=&quot;table table-striped&quot;]/tbody[1]/tr[4]/td[1]</value>
+      <webElementGuid>48c37228-bce5-4413-b622-e4921ae063da</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Total'])[1]/following::td[1]</value>
+      <webElementGuid>22ac93cc-af60-42d6-bdef-60023b5e46e1</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Tax'])[1]/following::td[2]</value>
+      <webElementGuid>3e6c0d96-2f64-432d-a72f-664e38831b75</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Back'])[1]/preceding::td[1]</value>
+      <webElementGuid>bcec6d2b-3293-4af0-a7d5-770d929e2712</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Testing-Site - RMIT Vietnam Software Testing Course'])[1]/preceding::td[1]</value>
+      <webElementGuid>aacaab0e-fcd3-425e-8d03-ea0987df0c1e</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='43.20']/parent::*</value>
+      <webElementGuid>f3f3157c-aa7b-4e66-a21f-019279ae85f0</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//table[4]/tbody/tr[4]/td</value>
+      <webElementGuid>f24a03d2-305a-4999-9852-93c350bfa38b</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//td[(text() = '43.20' or . = '43.20')]</value>
+      <webElementGuid>f796f99b-c306-4515-9a2d-bb810de56d10</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' table-striped ') and (position() = 9)]//*[(name() = 'tr') and (position() = 4)]//td</value>
+      <webElementGuid>bc6d7fa9-ee4d-4d5e-821d-77f882429e40</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

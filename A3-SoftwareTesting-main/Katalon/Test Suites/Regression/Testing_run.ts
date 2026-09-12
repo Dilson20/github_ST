@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuiteEntity>
+   <description></description>
+   <name>Testing_run</name>
+   <tag></tag>
+   <isRerun>false</isRerun>
+   <mailRecipient></mailRecipient>
+   <numberOfRerun>0</numberOfRerun>
+   <pageLoadTimeout>10</pageLoadTimeout>
+   <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
+   <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
+   <rerunImmediately>false</rerunImmediately>
+   <testSuiteGuid>3e68c2f2-f8a4-4286-bdbc-fe16552e5d61</testSuiteGuid>
+   <testCaseLink>
+      <guid>cd3485d4-d11c-4a29-a937-406ac6c167d8</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Owner/TC_OwnerRequiredFields_EP</testCaseId>
+      <testDataLink>
+         <combinationType>MANY</combinationType>
+         <id>21d8c87a-f5d3-4954-ac58-c9a9bb1cc082</id>
+         <iterationEntity>
+            <iterationType>ALL</iterationType>
+            <value></value>
+         </iterationEntity>
+         <testDataId>Data Files/OwnerRequiredFieldsEP</testDataId>
+      </testDataLink>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId>21d8c87a-f5d3-4954-ac58-c9a9bb1cc082</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>firstName</value>
+         <variableId>2e2abcaa-619c-40c5-876d-25e40a546e76</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>21d8c87a-f5d3-4954-ac58-c9a9bb1cc082</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>lastName</value>
+         <variableId>8d98a76b-c0b7-4606-a59d-a3b243e21ff6</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>21d8c87a-f5d3-4954-ac58-c9a9bb1cc082</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>address</value>
+         <variableId>266cb373-c318-4479-b1fc-e213ee81ab9c</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>21d8c87a-f5d3-4954-ac58-c9a9bb1cc082</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>city</value>
+         <variableId>4d7f15de-b88f-4275-93b4-a1b53da43b27</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>21d8c87a-f5d3-4954-ac58-c9a9bb1cc082</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>telephone</value>
+         <variableId>3a82d129-212c-4871-8391-156ff98a4064</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>21d8c87a-f5d3-4954-ac58-c9a9bb1cc082</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>expectedErrorField</value>
+         <variableId>4c9f571c-dabe-40b1-92d9-baec7d698ff8</variableId>
+      </variableLink>
+   </testCaseLink>
+</TestSuiteEntity>

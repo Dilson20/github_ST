@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span_James Carter</name>
+   <tag></tag>
+   <elementGuidId>ba0d22a8-ba63-42f6-868e-2f58d9d2ebd1</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//table[@id='vets']/tbody/tr/td/span</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>span.fw-semibold</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>9d5592b1-fda4-438d-8691-c5544c13f949</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>fw-semibold</value>
+      <webElementGuid>e4911e2d-c5de-4226-a582-dd39044f54cd</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>James Carter</value>
+      <webElementGuid>4d86dcb9-0924-4660-a2cf-1b2d50a51467</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;vets&quot;)/tbody[1]/tr[1]/td[1]/span[@class=&quot;fw-semibold&quot;]</value>
+      <webElementGuid>46203bdd-9acb-4d20-a3cb-8521e28931b9</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//table[@id='vets']/tbody/tr/td/span</value>
+      <webElementGuid>972610b0-2c3b-47cb-8cde-5826bf5bb383</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Specialties'])[1]/following::span[1]</value>
+      <webElementGuid>46c58939-abc4-4482-a4b4-5f9b6b0bbacd</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Name'])[1]/following::span[1]</value>
+      <webElementGuid>9de9c507-b74b-44cc-9a16-f747e2ff10fe</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Helen Leary'])[1]/preceding::span[2]</value>
+      <webElementGuid>0604a1ee-b252-471d-8b69-6fac90e430d0</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='radiology'])[1]/preceding::span[3]</value>
+      <webElementGuid>5c4ee96b-722c-47cb-91a8-0cd99b8974d2</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='James Carter']/parent::*</value>
+      <webElementGuid>02119c6e-8587-41ba-bb04-fe2f540b38ba</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//td/span</value>
+      <webElementGuid>86c3458b-3a61-4bbc-8d92-468ee969743d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[(text() = 'James Carter' or . = 'James Carter')]</value>
+      <webElementGuid>c0bf5600-ef91-4a9c-bd11-e4953405bd2d</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>button_Add_Microchipping</name>
+   <tag></tag>
+   <elementGuidId>cdc88513-d1e1-40ad-8235-2e491adf4a82</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>tr:nth-of-type(2) > td:nth-of-type(3) > form > button.btn.btn-primary.btn-sm.d-inline-flex.align-items-center.justify-content-center</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>(.//*[normalize-space(text()) and normalize-space(.)='Microchipping'])[1]/following::button[1]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=row[name=&quot;Microchipping 30.00 Add&quot;i] >> internal:role=button</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>button</value>
+      <webElementGuid>0b1eec28-cb49-41c8-a578-b1eb6b269811</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>btn btn-primary btn-sm d-inline-flex align-items-center justify-content-center</value>
+      <webElementGuid>b5e59c9c-bc38-4dfc-9b43-3d0e358b4d94</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>type</name>
+      <type>Main</type>
+      <value>submit</value>
+      <webElementGuid>07924c88-30d1-4063-9d85-51df2e9adb2e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Add</value>
+      <webElementGuid>ad9727f3-d761-411e-a31f-404e8e2d895e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>/html[1]/body[@class=&quot;min-vh-100 d-flex flex-column&quot;]/main[@class=&quot;container py-4 flex-grow-1 d-flex flex-column&quot;]/div[1]/table[@class=&quot;table table-striped&quot;]/tbody[1]/tr[2]/td[3]/form[1]/button[@class=&quot;btn btn-primary btn-sm d-inline-flex align-items-center justify-content-center&quot;]</value>
+      <webElementGuid>61cba6c8-a5fe-4c77-b83a-993151d2f4a5</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>(//button[@type='submit'])[2]</value>
+      <webElementGuid>d42b36fa-b2c4-4a70-b77d-ca097d127706</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Microchipping'])[1]/following::button[1]</value>
+      <webElementGuid>3d4282a0-72f6-4cbd-80de-e57e7c51de61</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Add'])[1]/following::button[1]</value>
+      <webElementGuid>6327a924-3499-4964-bb9b-26fe022563b9</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Surgery'])[1]/preceding::button[1]</value>
+      <webElementGuid>42759eaa-0dcb-4524-b3d9-966f5123e0cd</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Add'])[3]/preceding::button[1]</value>
+      <webElementGuid>863d7fbf-b681-4e83-b1e3-faf6f970025c</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//tr[2]/td[3]/form/button</value>
+      <webElementGuid>cfd571db-5ecd-47bc-9d43-d13f87182d5a</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//button[@type = 'submit' and (text() = 'Add' or . = 'Add')]</value>
+      <webElementGuid>6853251c-3521-46fd-aba4-b954892e3cbb</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>
