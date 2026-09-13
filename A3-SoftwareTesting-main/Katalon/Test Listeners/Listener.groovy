@@ -13,6 +13,8 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
 
+import internal.GlobalVariable as GlobalVariable
+
 import com.kms.katalon.core.annotation.BeforeTestCase
 import com.kms.katalon.core.annotation.BeforeTestSuite
 import com.kms.katalon.core.annotation.AfterTestCase
@@ -38,6 +40,6 @@ class Listener {
 	 */
 	@BeforeTestCase
 	def beforeTestCase(TestCaseContext testCaseContext) {
-		CucumberKW.GLUE = ['steps', 'steps.pet', 'steps.billing', '']
+		CucumberKW.GLUE = ['steps', 'common', 'operations', 'billing']
 	}
 }

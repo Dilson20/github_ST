@@ -5,8 +5,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -23,7 +21,6 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -48,10 +45,8 @@ public class VisitServicesBillingTest {
 
     @BeforeEach
     void createFreshVisitFixture() {
-        servicesPage = new VisitFixtureFlow(driver, BASE_URL).createOwnerWithPetAndVisit();
+        servicesPage = new VisitFixtureFlow(driver, BASE_URL). createOwnerWithPetAndVisit();
 
-        // Fixture precondition, and incidentally FR-S1: a visit with no services still carries
-        // the 40.00 base fee. Also proves nothing leaked in from the previous test.
         assertAll("fresh visit baseline (FR-S1: base fee applies with no services selected)",
                 () -> assertTrue(servicesPage.selectedServiceNames().isEmpty(),
                         "A new visit must start with no selected services"),
@@ -69,206 +64,242 @@ public class VisitServicesBillingTest {
     }
 
     // ------------------------------------------------------------------ SCRUM-93 / US-CAL-01
+    // TC-CAL-01..03 walk the loyalty-discount threshold: below it, exactly on it, above it.
+    // Datasets are the three worked examples from the Requirements Summary, used verbatim.
 
-    @ParameterizedTest(name = "{0} ({1}): subtotal {3} -> discount {4}, tax {5}, total {6}")
-    @CsvSource({
-            // testCaseId, jiraId,   services,                        subtotal, discount, tax,   total
-            "TC-CAL-01, SCRUM-58, 'Vaccination|X-Ray',              140.00,   0.00,    11.20, 151.20",
-            "TC-CAL-02, SCRUM-59, 'Microchipping|X-Ray',            150.00,   15.00,   10.80, 145.80",
-            "TC-CAL-03, SCRUM-60, 'Dental Cleaning|X-Ray',          170.00,   17.00,   12.24, 165.24"
-    })
-    @DisplayName("TC-CAL-01/02/03 [FR-S4]: loyalty discount applies exactly at subtotal >= 150.00")
-    void tcCal01to03_discountThresholdBoundary(String testCaseId, String jiraId, String services,
-                                               String expectedSubtotal, String expectedDiscount,
-                                               String expectedTax, String expectedTotal) {
-        List<String> chosen = List.of(services.split("\\|"));
-        chosen.forEach(servicesPage::addService);
-
-        // FR-S2 AC-01: adding a service updates the selected list.
-        assertTrue(servicesPage.selectedServiceNames().containsAll(chosen),
-                testCaseId + " [FR-S2]: every added service must appear in Selected Services, but found "
+    @Test
+    @DisplayName("TC-CAL-01 (SCRUM-58) [FR-S1, FR-S4]: below threshold - no services still bills the 40.00 base fee")
+    void tcCal01_belowThresholdWithNoServices() {
+        // Covers FR-S1 (base visit fee is charged on every visit) and FR-S4 (no discount below
+        // 150.00). Spec worked example 1: 40.00 / 0.00 / 3.20 / 43.20.
+        // Shares its dataset with TC-CAL-04 by design - see the note on that test.
+        assertTrue(servicesPage.selectedServiceNames().isEmpty(),
+                "TC-CAL-01 [FR-S1]: this case must bill a visit with nothing selected, but found "
                         + servicesPage.selectedServiceNames());
 
-        assertAll(testCaseId + " (" + jiraId + ") billing breakdown for subtotal " + expectedSubtotal,
-                () -> assertEquals(expectedSubtotal, servicesPage.subtotal(),
-                        testCaseId + " [FR-S1]: subtotal must be 40.00 base plus the selected service fees"),
-                () -> assertEquals(expectedDiscount, servicesPage.discount(),
-                        testCaseId + " [FR-S4]: discount must be 10% when subtotal >= 150.00 (inclusive), else 0.00"),
-                () -> assertEquals(expectedTax, servicesPage.tax(),
-                        testCaseId + " [FR-S5]: tax must be 8% of (subtotal - discount)"),
-                () -> assertEquals(expectedTotal, servicesPage.total(),
-                        testCaseId + " [FR-S4 AC-04]: total must be (subtotal - discount) + tax"));
+        // The full breakdown is asserted, not just the total: the point of this case is that the
+        // 40.00 base fee is present as the subtotal in its own right, with no service behind it.
+        assertBreakdown("TC-CAL-01", "SCRUM-58", readBreakdown(), "40.00", "0.00", "3.20", "43.20");
+    }
 
-        // Cross-check the displayed figures against the rule computed independently here,
-        // so the test fails even if the CSV row itself were mistyped.
-        assertEquals(expectedTotal, specTotalFor(money(expectedSubtotal)),
-                testCaseId + ": expected total in the test data must match the specification rule");
+    @Test
+    @DisplayName("TC-CAL-02 (SCRUM-59) [FR-S4 AC-04]: exactly at the 150.00 threshold the discount applies")
+    void tcCal02_exactlyAtDiscountThreshold() {
+        // Covers FR-S4 AC-04: the 10% discount applies at subtotal >= 150.00 (inclusive).
+        // Spec worked example 2: Base + Microchipping + X-Ray = 150.00 / 15.00 / 10.80 / 145.80.
+        addServices("Microchipping", "X-Ray");
+
+        assertBreakdown("TC-CAL-02", "SCRUM-59", readBreakdown(), "150.00", "15.00", "10.80", "145.80");
+    }
+
+    @Test
+    @DisplayName("TC-CAL-03 (SCRUM-60) [FR-S4, FR-S5]: above the threshold the discount and tax both scale")
+    void tcCal03_aboveDiscountThreshold() {
+        // Covers FR-S4 (discount above the threshold) and FR-S5 (tax on the post-discount amount).
+        // Spec worked example 3: Base + Surgery = 240.00 / 24.00 / 17.28 / 233.28.
+        addServices("Surgery");
+
+        assertBreakdown("TC-CAL-03", "SCRUM-60", readBreakdown(), "240.00", "24.00", "17.28", "233.28");
     }
 
     // ------------------------------------------------------------------ SCRUM-94 / US-CAL-02
+    @Test
+    @DisplayName("TC-CAL-04 (SCRUM-95) [FR-S5 AC-01]: tax with no discount - control case")
+    void tcCal04_taxWithNoDiscount() {
+        // Covers FR-S5 AC-01/AC-05 for the no-discount equivalence class. Control case: with a
+        // 0.00 discount the pre- and post-discount tax bases are identical, so a defect in the tax
+        // base cannot show here. It anchors the comparison made by TC-CAL-05 and TC-CAL-06.
+        // Spec worked example 1: 40.00 / 0.00 / 3.20 / 43.20. Dataset shared with TC-CAL-01.
+        assertTrue(servicesPage.selectedServiceNames().isEmpty(),
+                "TC-CAL-04 [FR-S1]: this case must bill a visit with nothing selected, but found "
+                        + servicesPage.selectedServiceNames());
 
-    @ParameterizedTest(name = "{0} ({1}): subtotal {3}, discount {4} -> tax {5}, total {6}")
-    @CsvSource({
-            // testCaseId, jiraId,   services,                                subtotal, discount, tax,   total
-            "TC-CAL-04, SCRUM-95, 'Vaccination',                            60.00,    0.00,    4.80,  64.80",
-            "TC-CAL-05, SCRUM-96, 'Vaccination|Dental Cleaning|X-Ray',     190.00,   19.00,   13.68, 184.68",
-            "TC-CAL-06, SCRUM-97, 'Surgery',                               240.00,   24.00,   17.28, 233.28"
-    })
-    @DisplayName("TC-CAL-04/05/06 [FR-S5]: tax is charged on the post-discount amount")
-    void tcCal04to06_taxIsChargedOnPostDiscountAmount(String testCaseId, String jiraId, String services,
-                                                      String expectedSubtotal, String expectedDiscount,
-                                                      String expectedTax, String expectedTotal) {
-        List.of(services.split("\\|")).forEach(servicesPage::addService);
+        Breakdown actual = readBreakdown();
+        assertAll("TC-CAL-04 (SCRUM-95) tax base with no discount",
+                () -> assertBreakdown("TC-CAL-04", "SCRUM-95", actual, "40.00", "0.00", "3.20", "43.20"),
+                () -> assertTaxMatchesDisplayedPostDiscountAmount("TC-CAL-04", actual));
+    }
 
-        String actualSubtotal = servicesPage.subtotal();
-        String actualDiscount = servicesPage.discount();
+    @Test
+    @DisplayName("TC-CAL-05 (SCRUM-96) [FR-S5 AC-01]: tax with a discount is charged on the post-discount amount")
+    void tcCal05_taxWithDiscount() {
+        // Covers FR-S5 AC-01/AC-04/AC-05 for the discount equivalence class.
+        // Spec worked example 2: 150.00 / 15.00 / 10.80 / 145.80. Dataset shared with TC-CAL-02.
+        addServices("Microchipping", "X-Ray");
 
-        assertAll(testCaseId + " (" + jiraId + ") tax base for subtotal " + expectedSubtotal,
-                () -> assertEquals(expectedSubtotal, actualSubtotal,
-                        testCaseId + " [FR-S1]: subtotal must be 40.00 base plus the selected service fees"),
-                () -> assertEquals(expectedDiscount, actualDiscount,
-                        testCaseId + " [FR-S4]: discount must be 10% of subtotal at or above 150.00"),
-                () -> assertEquals(expectedTax, servicesPage.tax(),
-                        testCaseId + " [FR-S5 AC-01]: tax must be 8% of (subtotal - discount)"),
-                () -> assertEquals(expectedTotal, servicesPage.total(),
-                        testCaseId + " [FR-S5 AC-04]: total must use the correctly calculated tax"));
+        Breakdown actual = readBreakdown();
+        assertAll("TC-CAL-05 (SCRUM-96) tax base with a discount",
+                () -> assertBreakdown("TC-CAL-05", "SCRUM-96", actual, "150.00", "15.00", "10.80", "145.80"),
+                () -> assertTaxMatchesDisplayedPostDiscountAmount("TC-CAL-05", actual),
+                () -> assertTaxIsNotChargedOnPreDiscountSubtotal("TC-CAL-05", actual));
+    }
 
-        String taxRequiredByRule = format(pct(money(actualSubtotal).subtract(money(actualDiscount)), TAX_RATE));
-        assertEquals(taxRequiredByRule, servicesPage.tax(),
-                testCaseId + " [FR-S5 AC-05]: displayed tax must be 8% of the displayed post-discount amount");
+    @Test
+    @DisplayName("TC-CAL-06 (SCRUM-97) [FR-S5 AC-01]: a large discount still moves the tax base")
+    void tcCal06_taxWithLargeDiscount() {
+        // Covers FR-S5 AC-01/AC-04/AC-05 with the largest discount of the three worked examples,
+        // so any error in the tax base shows with the widest margin (17.28 vs 19.20).
+        // Spec worked example 3: 240.00 / 24.00 / 17.28 / 233.28. Dataset shared with TC-CAL-03.
+        addServices("Surgery");
 
-        if (money(expectedDiscount).signum() > 0) {
-            assertNotEquals(format(pct(money(actualSubtotal), TAX_RATE)), servicesPage.tax(),
-                    testCaseId + " [FR-S5 AC-01]: tax must NOT be 8% of the pre-discount subtotal");
-        }
+        Breakdown actual = readBreakdown();
+        assertAll("TC-CAL-06 (SCRUM-97) tax base with a large discount",
+                () -> assertBreakdown("TC-CAL-06", "SCRUM-97", actual, "240.00", "24.00", "17.28", "233.28"),
+                () -> assertTaxMatchesDisplayedPostDiscountAmount("TC-CAL-06", actual),
+                () -> assertTaxIsNotChargedOnPreDiscountSubtotal("TC-CAL-06", actual));
     }
 
     // ------------------------------------------------------------------ SCRUM-113 / US-CAL-03
 
     @Test
-    @DisplayName("TC-CAL-07 [FR-S3]: removing a single service recalculates the breakdown")
+    @DisplayName("TC-CAL-07 (SCRUM-115) [FR-S3]: Remove Single Service")
     void tcCal07_removeSingleServiceRecalculatesBreakdown() {
-        servicesPage.addService("Vaccination").addService("X-Ray");
-        assertEquals("151.20", servicesPage.total(),
-                "TC-CAL-07 precondition: Vaccination + X-Ray must total 151.20 before removal");
+        addServices("Vaccination", "Dental Cleaning");
+        Breakdown before = readBreakdown();
 
-        servicesPage.removeService("X-Ray");
+        servicesPage.removeService("Dental Cleaning");
 
+        Breakdown after = readBreakdown();
         List<String> selectedAfter = servicesPage.selectedServiceNames();
         List<String> catalogueAfter = servicesPage.catalogueServiceNames();
-        String subtotal = servicesPage.subtotal();
-        String discount = servicesPage.discount();
-        String tax = servicesPage.tax();
-        String total = servicesPage.total();
 
-        assertAll("TC-CAL-07 (SCRUM-115) state immediately after removing X-Ray",
-                () -> assertFalse(selectedAfter.contains("X-Ray"),
+        // Both stages are snapshotted before anything is asserted, so a wrong pre-removal figure
+        // cannot abort the test and hide what the removal itself did.
+        assertAll("TC-CAL-07 (SCRUM-115) removing Dental Cleaning from a 110.00 visit",
+                () -> assertBreakdown("TC-CAL-07 before removal", "SCRUM-115", before,
+                        "110.00", "0.00", "8.80", "118.80"),
+                () -> assertFalse(selectedAfter.contains("Dental Cleaning"),
                         "TC-CAL-07 [FR-S3 AC-01]: the removed service must disappear from Selected Services"),
-                () -> assertTrue(catalogueAfter.contains("X-Ray"),
+                () -> assertTrue(catalogueAfter.contains("Dental Cleaning"),
                         "TC-CAL-07 [FR-S1]: a removed service must return to the unselected catalogue"),
-                () -> assertEquals("60.00", subtotal,
-                        "TC-CAL-07 [FR-S3 AC-02]: subtotal must fall to 40.00 base + 20.00 Vaccination"),
-                () -> assertEquals("0.00", discount,
-                        "TC-CAL-07 [FR-S4]: 60.00 is below the 150.00 threshold, so no discount"),
-                () -> assertEquals("4.80", tax,
-                        "TC-CAL-07 [FR-S5]: tax must be 8% of 60.00"),
-                () -> assertEquals("64.80", total,
-                        "TC-CAL-07 [FR-S3 AC-04]: the recalculated total must be mathematically correct"));
+                () -> assertBreakdown("TC-CAL-07 after removing Dental Cleaning", "SCRUM-115", after,
+                        "60.00", "0.00", "4.80", "64.80"));
     }
 
     // ------------------------------------------------------------------ SCRUM-114 / US-CAL-04
 
     @Test
-    @DisplayName("TC-CAL-08 [FR-S3]: services can be removed one by one without cascading errors")
+    @DisplayName("TC-CAL-08 (SCRUM-116) [FR-S3]: Remove Multiple Service Sequentially")
     void tcCal08_removeMultipleServicesSequentially() {
-        servicesPage.addService("Vaccination").addService("Dental Cleaning").addService("X-Ray");
-
-        servicesPage.removeService("X-Ray");
-        String subtotalAfterFirst = servicesPage.subtotal();
-        String taxAfterFirst = servicesPage.tax();
-        String totalAfterFirst = servicesPage.total();
-
-        servicesPage.removeService("Dental Cleaning");
-        String subtotalAfterSecond = servicesPage.subtotal();
-        String taxAfterSecond = servicesPage.tax();
-        String totalAfterSecond = servicesPage.total();
-        List<String> selectedAfterSecond = servicesPage.selectedServiceNames();
-
-        // AC-03: the final bill must equal what it would have been had only Vaccination been
-        // added - derived from the rule rather than restated as a literal.
-        String billForVaccinationOnly = specTotalFor(BASE_VISIT_FEE.add(new BigDecimal("20.00")));
-
-        assertAll("TC-CAL-08 (SCRUM-116) sequential removals",
-                () -> assertEquals("110.00", subtotalAfterFirst,
-                        "TC-CAL-08 [AC-02] after removal 1: 40.00 base + Vaccination 20.00 + Dental Cleaning 50.00"),
-                () -> assertEquals("8.80", taxAfterFirst,
-                        "TC-CAL-08 [FR-S5] after removal 1: tax must be 8% of 110.00"),
-                () -> assertEquals("118.80", totalAfterFirst,
-                        "TC-CAL-08 [AC-02] after removal 1: the removal must recalculate the total"),
-                () -> assertEquals("60.00", subtotalAfterSecond,
-                        "TC-CAL-08 [AC-02] after removal 2: 40.00 base + Vaccination 20.00"),
-                () -> assertEquals("4.80", taxAfterSecond,
-                        "TC-CAL-08 [FR-S5] after removal 2: tax must be 8% of 60.00"),
-                () -> assertEquals("64.80", totalAfterSecond,
-                        "TC-CAL-08 [AC-02] after removal 2: the second removal must recalculate without cascading errors"),
-                () -> assertIterableEquals(List.of("Vaccination"), selectedAfterSecond,
-                        "TC-CAL-08 [AC-01]: only the kept service may remain selected"),
-                () -> assertEquals(billForVaccinationOnly, totalAfterSecond,
-                        "TC-CAL-08 [AC-03]: the final bill must match a visit where only Vaccination was ever added"));
-    }
-
-    @Test
-    @DisplayName("TC-CAL-09 [FR-S3/FR-S4]: removing at the threshold drops the discount")
-    void tcCal09_removeServiceAtDiscountThresholdDropsDiscount() {
-        servicesPage.addService("Microchipping").addService("X-Ray");
+        addServices("Vaccination", "Dental Cleaning", "X-Ray", "Microchipping");
+        Breakdown before = readBreakdown();
 
         servicesPage.removeService("Microchipping");
+        Breakdown afterFirst = readBreakdown();
 
-        List<String> selectedAfter = servicesPage.selectedServiceNames();
-        String subtotal = servicesPage.subtotal();
-        String discount = servicesPage.discount();
-        String tax = servicesPage.tax();
-        String total = servicesPage.total();
+        servicesPage.removeService("X-Ray");
+        Breakdown afterSecond = readBreakdown();
+        List<String> selectedAfterSecond = servicesPage.selectedServiceNames();
 
-        assertAll("TC-CAL-09 (SCRUM-117) after dropping from 150.00 to 120.00",
-                () -> assertFalse(selectedAfter.contains("Microchipping"),
-                        "TC-CAL-09 [FR-S3 AC-01]: Microchipping must disappear from Selected Services"),
-                () -> assertEquals("120.00", subtotal,
-                        "TC-CAL-09 [AC-02]: 40.00 base + X-Ray 80.00"),
-                () -> assertEquals("0.00", discount,
-                        "TC-CAL-09 [FR-S4]: falling below 150.00 must remove the discount entirely"),
-                () -> assertEquals("9.60", tax,
-                        "TC-CAL-09 [FR-S5]: tax must be 8% of 120.00"),
-                () -> assertEquals("129.60", total,
-                        "TC-CAL-09 [AC-04]: the recalculated total must be mathematically correct"));
+        String billForVaccinationAndDental = specTotalFor(
+                BASE_VISIT_FEE.add(new BigDecimal("20.00")).add(new BigDecimal("50.00")));
+
+        assertAll("TC-CAL-08 (SCRUM-116) sequential removals",
+                () -> assertBreakdown("TC-CAL-08 before removals", "SCRUM-116", before,
+                        "220.00", "22.00", "15.84", "213.84"),
+                () -> assertBreakdown("TC-CAL-08 after removing Microchipping", "SCRUM-116", afterFirst,
+                        "190.00", "19.00", "13.68", "184.68"),
+                () -> assertBreakdown("TC-CAL-08 after also removing X-Ray", "SCRUM-116", afterSecond,
+                        "110.00", "0.00", "8.80", "118.80"),
+                // Selected Services comes back in a different order between page loads, so this
+                // compares the set, not the sequence.
+                () -> assertEquals(List.of("Dental Cleaning", "Vaccination"),
+                        selectedAfterSecond.stream().sorted().toList(),
+                        "TC-CAL-08 [AC-01]: only the kept services may remain selected"),
+                () -> assertEquals(billForVaccinationAndDental, afterSecond.total(),
+                        "TC-CAL-08 [AC-03]: the final bill must match a visit where only Vaccination "
+                                + "and Dental Cleaning were ever added"));
     }
 
     @Test
-    @DisplayName("TC-CAL-10 [FR-S3/FR-S5]: removing above the threshold recalculates the discount")
+    @DisplayName("TC-CAL-09 (SCRUM-117) [FR-S3/FR-S4]: Remove Service at Discount Threshold")
+    void tcCal09_removeServiceAtDiscountThresholdDropsDiscount() {
+        addServices("Microchipping", "X-Ray");
+        Breakdown before = readBreakdown();
+
+        servicesPage.removeService("X-Ray");
+
+        Breakdown after = readBreakdown();
+        List<String> selectedAfter = servicesPage.selectedServiceNames();
+
+        assertAll("TC-CAL-09 (SCRUM-117) dropping from 150.00 to 70.00",
+                () -> assertBreakdown("TC-CAL-09 before removal", "SCRUM-117", before,
+                        "150.00", "15.00", "10.80", "145.80"),
+                () -> assertFalse(selectedAfter.contains("X-Ray"),
+                        "TC-CAL-09 [FR-S3 AC-01]: X-Ray must disappear from Selected Services, but found "
+                                + selectedAfter),
+                () -> assertBreakdown("TC-CAL-09 after removing X-Ray", "SCRUM-117", after,
+                        "70.00", "0.00", "5.60", "75.60"));
+    }
+
+    @Test
+    @DisplayName("TC-CAL-10 (SCRUM-118) [FR-S3/FR-S5]: Remove Service Above Discount Threshold")
     void tcCal10_removeServiceAboveDiscountThresholdRecalculates() {
-        servicesPage.addService("Vaccination").addService("Dental Cleaning").addService("X-Ray");
+        addServices("Surgery", "X-Ray");
+        Breakdown before = readBreakdown();
 
-        servicesPage.removeService("Vaccination");
+        servicesPage.removeService("X-Ray");
 
-        String subtotal = servicesPage.subtotal();
-        String discount = servicesPage.discount();
-        String tax = servicesPage.tax();
-        String total = servicesPage.total();
+        Breakdown after = readBreakdown();
 
-        assertAll("TC-CAL-10 (SCRUM-118) after dropping from 190.00 to 170.00",
-                () -> assertEquals("170.00", subtotal,
-                        "TC-CAL-10 [AC-02]: 40.00 base + Dental Cleaning 50.00 + X-Ray 80.00"),
-                () -> assertEquals("17.00", discount,
-                        "TC-CAL-10 [FR-S4]: still above 150.00, so the discount must be 10% of 170.00"),
-                () -> assertNotEquals("19.00", discount,
-                        "TC-CAL-10 [AC-02]: the discount must be recomputed, not carried over from 190.00"),
-                () -> assertEquals("12.24", tax,
-                        "TC-CAL-10 [FR-S5]: tax must be 8% of the post-discount 153.00"),
-                () -> assertEquals("165.24", total,
-                        "TC-CAL-10 [AC-04]: the recalculated total must be mathematically correct"));
+        assertAll("TC-CAL-10 (SCRUM-118) dropping from 320.00 to 240.00, still above the threshold",
+                () -> assertBreakdown("TC-CAL-10 before removal", "SCRUM-118", before,
+                        "320.00", "32.00", "23.04", "311.04"),
+                () -> assertBreakdown("TC-CAL-10 after removing X-Ray", "SCRUM-118", after,
+                        "240.00", "24.00", "17.28", "233.28"),
+                () -> assertNotEquals("32.00", after.discount(),
+                        "TC-CAL-10 [AC-02]: the discount must be recomputed, not carried over from 320.00"));
     }
 
     // ------------------------------------------------------------------ helpers
+
+    private void addServices(String... serviceNames) {
+        for (String serviceName : serviceNames) {
+            servicesPage.addService(serviceName);
+        }
+
+        // FR-S2 AC-01: adding a service updates the selected list.
+        List<String> selected = servicesPage.selectedServiceNames();
+        assertTrue(selected.containsAll(List.of(serviceNames)),
+                "[FR-S2 AC-01]: every added service must appear in Selected Services, but found " + selected);
+    }
+
+    private record Breakdown(String subtotal, String discount, String tax, String total) {}
+
+    private Breakdown readBreakdown() {
+        return new Breakdown(servicesPage.subtotal(), servicesPage.discount(),
+                servicesPage.tax(), servicesPage.total());
+    }
+
+    private static void assertBreakdown(String testCaseId, String jiraId, Breakdown actual,
+                                        String expectedSubtotal, String expectedDiscount,
+                                        String expectedTax, String expectedTotal) {
+        assertAll(testCaseId + " (" + jiraId + ") billing breakdown for subtotal " + expectedSubtotal,
+                () -> assertEquals(expectedSubtotal, actual.subtotal(),
+                        testCaseId + " [FR-S1]: subtotal must be 40.00 base plus the selected service fees"),
+                () -> assertEquals(expectedDiscount, actual.discount(),
+                        testCaseId + " [FR-S4]: discount must be 10% when subtotal >= 150.00 (inclusive), else 0.00"),
+                () -> assertEquals(expectedTax, actual.tax(),
+                        testCaseId + " [FR-S5]: tax must be 8% of (subtotal - discount)"),
+                () -> assertEquals(expectedTotal, actual.total(),
+                        testCaseId + " [FR-S4 AC-04]: total must be (subtotal - discount) + tax"));
+
+        assertEquals(expectedTotal, specTotalFor(money(expectedSubtotal)),
+                testCaseId + ": expected total in the test data must match the specification rule");
+    }
+
+    /** FR-S5 AC-05: the figures on the page must be internally consistent with each other. */
+    private static void assertTaxMatchesDisplayedPostDiscountAmount(String testCaseId, Breakdown actual) {
+        BigDecimal postDiscount = money(actual.subtotal()).subtract(money(actual.discount()));
+        assertEquals(format(pct(postDiscount, TAX_RATE)), actual.tax(),
+                testCaseId + " [FR-S5 AC-05]: displayed tax must be 8% of the displayed post-discount amount");
+    }
+
+    /** FR-S5 AC-01, stated negatively: the tax base must not be the raw subtotal. */
+    private static void assertTaxIsNotChargedOnPreDiscountSubtotal(String testCaseId, Breakdown actual) {
+        assertNotEquals(format(pct(money(actual.subtotal()), TAX_RATE)), actual.tax(),
+                testCaseId + " [FR-S5 AC-01]: tax must NOT be 8% of the pre-discount subtotal");
+    }
 
     private static BigDecimal money(String displayed) {
         assertTrue(displayed != null && displayed.matches("\\d+\\.\\d{2}"),
@@ -298,18 +329,9 @@ public class VisitServicesBillingTest {
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--window-size=1920,1080");
 
-        // The Billing Breakdown rows carry no id or data attribute, so VisitServicesPage has to
-        // locate them by their visible <th> label. Those labels come from messages*.properties
-        // and the jar ships de/es/fa/ko/pt/ru/tr bundles, so the locale is pinned to keep the
-        // locators deterministic on any machine.
         options.addArguments("--lang=en-US");
         options.setExperimentalOption("prefs", Map.of("intl.accept_languages", "en-US,en"));
 
-        // ---- ENVIRONMENT-SPECIFIC: the only machine-dependent code in this suite ------------
-        // One dev machine has /usr/bin/chromium and no google-chrome, where Selenium Manager
-        // cannot resolve a browser on its own. Teammates running real Chrome match neither
-        // branch and need no edit to this file. Override anywhere with:
-        //     mvn test -Dchrome.binary=/path/to/chrome
         String explicitBinary = System.getProperty("chrome.binary");
         if (explicitBinary != null && !explicitBinary.isBlank()) {
             options.setBinary(explicitBinary);

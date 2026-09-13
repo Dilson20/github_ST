@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Executes the Visit Services and Billing BDD feature file: cross-page total consistency (SCRUM-119 US-CAL-05, FR-S6; TC-CAL-11/12/13) and sequential service removal (SCRUM-114 US-CAL-04, FR-S3; TC-CAL-08).</description>
+   <name>RunVisitServicesBillingBDD</name>
+   <tag>GenAI,BDD,Billing,VisitServices</tag>
+   <comment></comment>
+   <origin>STUDIOASSIST</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>9adc4d91-79b4-4d96-a7fc-850f5979d4c1</testCaseGuid>
+</TestCaseEntity>

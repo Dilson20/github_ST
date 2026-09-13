@@ -29,3 +29,10 @@ Thumbs.db
 # Large Binaries (Testing Site JAR is 65MB, excluded to avoid GitHub size limits)
 *.jar
 *.war
+
+#Katalon
+Katalon/Libs/
+Katalon/bin/
+
+JMeter
+JMeter/html-dashboard-*/

@@ -173,7 +173,7 @@ TC-CAL-03 (SCRUM-60) billing breakdown for subtotal 170.00 (2 failures)
 		... 35 more
 
 tests.billing.VisitServicesBillingTest.tcCal09_removeServiceAtDiscountThresholdDropsDiscount -- Time elapsed: 2.969 s <<< FAILURE!
-org.opentest4j.MultipleFailuresError: 
+org.opentest4j.MultipleFailuresError:
 TC-CAL-09 (SCRUM-117) after dropping from 150.00 to 120.00 (3 failures)
 	org.opentest4j.AssertionFailedError: TC-CAL-09 [AC-02]: 40.00 base + X-Ray 80.00 ==> expected: <120.00> but was: <150.00>
 	org.opentest4j.AssertionFailedError: TC-CAL-09 [FR-S5]: tax must be 8% of 120.00 ==> expected: <9.60> but was: <12.00>
@@ -458,7 +458,7 @@ TC-CAL-08 (SCRUM-116) sequential removals (7 failures)
 		... 6 more
 
 tests.billing.VisitServicesBillingTest.tcCal04to06_taxIsChargedOnPostDiscountAmount(String, String, String, String, String, String, String)[2] -- Time elapsed: 2.841 s <<< FAILURE!
-org.opentest4j.MultipleFailuresError: 
+org.opentest4j.MultipleFailuresError:
 TC-CAL-05 (SCRUM-96) tax base for subtotal 190.00 (2 failures)
 	org.opentest4j.AssertionFailedError: TC-CAL-05 [FR-S5 AC-01]: tax must be 8% of (subtotal - discount) ==> expected: <13.68> but was: <15.20>
 	org.opentest4j.AssertionFailedError: TC-CAL-05 [FR-S5 AC-04]: total must use the correctly calculated tax ==> expected: <184.68> but was: <186.20>
@@ -610,7 +610,7 @@ TC-CAL-06 (SCRUM-97) tax base for subtotal 240.00 (2 failures)
 		... 35 more
 
 tests.billing.VisitServicesBillingTest.tcCal10_removeServiceAboveDiscountThresholdRecalculates -- Time elapsed: 1.987 s <<< FAILURE!
-org.opentest4j.MultipleFailuresError: 
+org.opentest4j.MultipleFailuresError:
 TC-CAL-10 (SCRUM-118) after dropping from 190.00 to 170.00 (5 failures)
 	org.opentest4j.AssertionFailedError: TC-CAL-10 [AC-02]: 40.00 base + Dental Cleaning 50.00 + X-Ray 80.00 ==> expected: <170.00> but was: <190.00>
 	org.opentest4j.AssertionFailedError: TC-CAL-10 [FR-S4]: still above 150.00, so the discount must be 10% of 170.00 ==> expected: <17.00> but was: <19.00>

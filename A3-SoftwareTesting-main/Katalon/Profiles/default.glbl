@@ -6,9 +6,7 @@
    <defaultProfile>true</defaultProfile>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'http://localhost:8080'</initValue>
+      <initValue>'https://katalon-studio-samples.github.io/calculator'</initValue>
       <name>baseUrl</name>
-      <protected>false</protected>
-      <valueType>STRING</valueType>
    </GlobalVariableEntity>
 </GlobalVariableEntities>
