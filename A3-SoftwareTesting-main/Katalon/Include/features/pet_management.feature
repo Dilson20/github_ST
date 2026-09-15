@@ -47,6 +47,6 @@ Feature: Pet Management Lifecycle
 
   @TC-PET-05 @AC-05 @regression
   Scenario: Edit an existing pet and update its profile
-    Given I navigate to the owner details page for owner 1
+    Given an owner has a pet named "Leo"
     When I edit the pet named "Leo" and change the name to "LeoUpdated" and type to "bird"
-    Then the pet "LeoUpdated" with type "bird" should be successfully recorded under owner 1
+    Then that owner's pet "LeoUpdated" should be recorded with type "bird"

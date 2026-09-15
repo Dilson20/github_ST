@@ -1,4 +1,4 @@
-package pages;
+package petmanagement;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -59,7 +59,9 @@ public class PetFormPage extends BasePage {
         // [IMPROVED] A normal click preserves native form validation behaviour.
         btn.click();
         // [IMPROVED] Match only the owner details route; /owners/{id}/pets/new is not success.
-        wait.until(ExpectedConditions.urlMatches(".*/owners/\\d+(?:;[^/?]*)?/?"));
+        // [IMPROVED] Anchor with \$: urlMatches uses find(), so without it the pet form URL
+        // /owners/{id}/pets/new already matches and the wait returns before the save completes.
+        wait.until(ExpectedConditions.urlMatches(".*/owners/\\d+(?:;[^/?]*)?/?\$"));
         return new OwnerDetailsPage(driver);
     }
 

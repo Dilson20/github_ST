@@ -1,4 +1,4 @@
-package steps;
+package petmanagement;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -9,8 +9,6 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import pages.OwnerDetailsPage;
-import pages.PetFormPage;
 
 import java.time.LocalDate;
 
@@ -21,6 +19,7 @@ public class PetStepDefinitions {
     private PetFormPage petFormPage;
     private String baseUrl = "http://localhost:8080";
     private String futurePetName;
+    private int editedPetOwnerId;
 
     @Before
     public void setup() {
@@ -91,6 +90,22 @@ public class PetStepDefinitions {
         ownerDetailsPage.navigateTo(baseUrl, ownerId);
     }
 
+    @Given("an owner has a pet named {string}")
+    public void an_owner_has_a_pet_named(String petName) {
+        // [IMPROVED] Create the owner and pet this scenario edits, so repeated runs never depend on seeded data
+        // that an earlier run has already renamed.
+        editedPetOwnerId = new OwnerFormPage(driver)
+                .open(baseUrl)
+                .registerOwner("Pet", "Edit" + System.currentTimeMillis(), "1 Test Street", "Melbourne", "0400111222");
+        // [IMPROVED] Start as a cat so the later change to a different type is a real change, not a no-op.
+        petFormPage = ownerDetailsPage.clickAddNewPet();
+        petFormPage.enterName(petName)
+                   .enterBirthDate("2010-09-07")
+                   .selectType("cat")
+                   .clickSubmitExpectingSuccess();
+        assert ownerDetailsPage.hasPetNamed(petName) : ("Pet " + petName + " should exist before it is edited.");
+    }
+
     @When("I edit the pet named {string} and change the name to {string} and type to {string}")
     public void i_edit_the_pet_named_and_change_the_name_to_and_type_to(String oldName, String newName, String newType) {
         // [IMPROVED] Do not create missing data inside the When step; fail if the Given state is wrong.
@@ -111,6 +126,12 @@ public class PetStepDefinitions {
     public void the_pet_with_type_should_be_successfully_recorded_under_owner(String petName, String type, Integer ownerId) {
         ownerDetailsPage.navigateTo(baseUrl, ownerId);
         // [IMPROVED] Verify the type supplied by the scenario, not only the name.
+        assert ownerDetailsPage.isPetTypeCorrect(petName, type) : ("Pet " + petName + " should have type " + type + ".");
+    }
+
+    @Then("that owner's pet {string} should be recorded with type {string}")
+    public void that_owners_pet_should_be_recorded_with_type(String petName, String type) {
+        ownerDetailsPage.navigateTo(baseUrl, editedPetOwnerId);
         assert ownerDetailsPage.isPetTypeCorrect(petName, type) : ("Pet " + petName + " should have type " + type + ".");
     }
 

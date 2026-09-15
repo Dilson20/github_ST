@@ -1,4 +1,4 @@
-package pages;
+package petmanagement;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;

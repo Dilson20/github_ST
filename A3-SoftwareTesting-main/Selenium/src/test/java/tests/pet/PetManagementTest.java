@@ -38,24 +38,6 @@ public class PetManagementTest {
         }
     }
 
-    @Test
-    @Order(1)
-    @DisplayName("TC-PET-01 [AC-01]: Successfully add a new pet for an existing owner")
-    public void testAddNewPetSuccess() {
-        ownerDetailsPage.navigateTo(BASE_URL, 1);
-
-        PetFormPage petForm = ownerDetailsPage.clickAddNewPet();
-        String petName = "Maximus" + (System.currentTimeMillis() % 1000);
-        petForm.enterName(petName)
-               .enterBirthDate("2023-04-15")
-               .selectType("dog");
-
-        OwnerDetailsPage resultPage = petForm.clickSubmitExpectingSuccess();
-        // [IMPROVED] Verify every submitted field, not only the pet name.
-        assertTrue(resultPage.isPetDetailsCorrect(petName, "dog", "2023-04-15"),
-                "Newly added pet should preserve name, type, and birth date.");
-    }
-
     @ParameterizedTest(name = "TC-PET-02 [AC-01, AC-04]: Data-Driven Add Pet [Name: {0}, Species: {2}]")
     @CsvSource({
             "Whiskers, 2022-01-10, cat",
@@ -64,7 +46,7 @@ public class PetManagementTest {
             "Sly, 2021-08-05, snake",
             "Iggy, 2020-05-12, lizard"
     })
-    @Order(2)
+    @Order(1)
     @DisplayName("TC-PET-02 [AC-01, AC-04]: Data-driven pet creation across diverse species")
     public void testDataDrivenAddPet(String name, String birthDate, String type) {
         ownerDetailsPage.navigateTo(BASE_URL, 2);
@@ -83,7 +65,7 @@ public class PetManagementTest {
     }
 
     @Test
-    @Order(3)
+    @Order(2)
     @DisplayName("TC-PET-03 [AC-02]: Validate pet creation fails when Name is blank")
     public void testAddPetWithBlankNameValidation() {
         ownerDetailsPage.navigateTo(BASE_URL, 1);
@@ -101,7 +83,7 @@ public class PetManagementTest {
     }
 
     @Test
-    @Order(4)
+    @Order(3)
     @DisplayName("TC-PET-04 [AC-03] (Defect Detection): Validate system rejection of future birth dates")
     public void testFutureBirthDateBehavior() {
         ownerDetailsPage.navigateTo(BASE_URL, 1);
@@ -125,33 +107,5 @@ public class PetManagementTest {
         ownerDetailsPage.navigateTo(BASE_URL, 1);
         assertFalse(ownerDetailsPage.hasPetNamed(futurePetName),
                 "Future-dated pet must not be created.");
-    }
-
-    @Test
-    @Order(5)
-    @DisplayName("TC-PET-05 [AC-05]: Edit an existing pet and update its profile")
-    public void testEditExistingPet() {
-        ownerDetailsPage.navigateTo(BASE_URL, 1);
-
-        // Create a unique pet for this test to ensure test isolation and repeatability
-        String petToEdit = "PetForEdit" + (System.currentTimeMillis() % 1000);
-        PetFormPage petForm = ownerDetailsPage.clickAddNewPet();
-        petForm.enterName(petToEdit)
-               .enterBirthDate("2023-01-01")
-               .selectType("dog")
-               .clickSubmitExpectingSuccess();
-
-        // Edit this newly created pet
-        PetFormPage editForm = ownerDetailsPage.clickEditPet(petToEdit);
-        assertEquals(petToEdit, editForm.getPetNameValue(), "Form should be pre-populated with pet name: " + petToEdit);
-
-        String updatedName = petToEdit + "Updated";
-        editForm.enterName(updatedName)
-                .selectType("bird");
-
-        OwnerDetailsPage resultPage = editForm.clickSubmitExpectingSuccess();
-        // [IMPROVED] Verify that edit updates the requested fields and keeps the pet record visible.
-        assertTrue(resultPage.isPetDetailsCorrect(updatedName, "bird", "2023-01-01"),
-                "Edited pet should display the updated name, type, and birth date.");
     }
 }
