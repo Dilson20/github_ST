@@ -1,5 +1,0 @@
-load_level,users,samples,average_ms,min_ms,max_ms,error_pct,measurement_window_s,throughput_requests_per_s
-TG_01_User (Load Level: 1),1,59,29.37,6,332,0.00,19.444,3.03
-TG_10_Users (Load Level: 10),10,487,10.99,1,89,0.00,19.682,24.74
-TG_25_Users (Load Level: 25),25,1200,8.63,0,81,0.00,19.522,61.47
-TG_50_Users (Load Level: 50),50,2427,4.79,0,46,0.00,19.704,123.17
